@@ -1,71 +1,45 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeMovement : MonoBehaviour
 {
-    [SerializeField] private float gridSize = 1.0f;
-    [SerializeField] private float speed = 10;
-    private Vector3 targetPos;
-    private Rigidbody rb;
+    [SerializeField] private float speed = 100;
     private bool isMoving = false;
 
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        targetPos = transform.position;
+    private void Update() {
+        if(isMoving) return;
+
+        if(Input.GetKeyDown(KeyCode.RightArrow)) {
+            StartCoroutine(Roll(Vector3.right));
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            StartCoroutine(Roll(Vector3.left));
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            StartCoroutine(Roll(Vector3.forward));
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            StartCoroutine(Roll(Vector3.back));
+        }
     }
 
-    private void Update()
-    {
-        if (!isMoving)
+    IEnumerator Roll(Vector3 direction) {
+        isMoving = true; 
+
+        float remainingAngle = 90;
+        Vector3 rotationCenter = GetRotationCenter(direction);
+        Vector3 rotiationAxis = Vector3.Cross(Vector3.up, direction);
+        while (remainingAngle > 0)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                targetPos += new Vector3(0, 0, gridSize);
-                isMoving = true;
-                rb.useGravity = false;
-            }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                targetPos += new Vector3(0, 0, -gridSize);
-                isMoving = true;
-                rb.useGravity = false;
-            }
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                targetPos += new Vector3(gridSize, 0, 0);
-                isMoving = true;
-                rb.useGravity = false;
-            }
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                targetPos += new Vector3(-gridSize, 0, 0);
-                isMoving = true;
-                rb.useGravity = false;
-            }
-
+            float rotationAngle = Mathf.Min(Time.deltaTime * speed, remainingAngle);
+            transform.RotateAround(rotationCenter, rotiationAxis, rotationAngle);
+            remainingAngle -= rotationAngle;
+            yield return null;
         }
 
+        isMoving = false;
     }
 
-    private void FixedUpdate()
-    {
-        if(isMoving) {
-            rb.MovePosition(Vector3.MoveTowards(transform.position, targetPos, Time.fixedDeltaTime * speed));
-
-            if(Vector3.Distance(rb.position, targetPos) < 0.01f) {
-                isMoving = false;
-                rb.useGravity = true;
-            }
-
-        }
+    private Vector3 GetRotationCenter(Vector3 direction) {
+        Vector3 halfScale = transform.localScale / 2f;
+        return transform.position + (direction * halfScale.x) + (Vector3.down * halfScale.y);
     }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(targetPos, 0.2f);
-    }
-
-
+    
 }
