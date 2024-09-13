@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718fe62df912dcd42b598c1ef90ba8e2, type: 3}
+  m_Name: Plain
+  m_EditorClassIdentifier: 
+  Type: 1
+  Layout: 2
+  GrassPrefab: {fileID: 1005392886544045810, guid: d502caf623fa5214c98b6a0df22b765f, type: 3}
+  ForestPrefab: {fileID: 1367806992624386859, guid: cd2cb03f06e714b4b95e76eac4cb74cf, type: 3}
+  CellSize: {x: 1, y: 1, z: 1}
+  GridSwizzle: 1

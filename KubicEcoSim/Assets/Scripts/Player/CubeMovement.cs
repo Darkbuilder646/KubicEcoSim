@@ -6,6 +6,13 @@ public class CubeMovement : MonoBehaviour
     [SerializeField] private float speed = 100;
     private bool isMoving = false;
 
+    private GameObject goRenderer;
+
+    private void Start() 
+    {
+        goRenderer = gameObject.GetComponentInChildren<BoxCollider>().gameObject;    
+    }
+
     private void Update() {
         if(isMoving) return;
 
@@ -29,7 +36,7 @@ public class CubeMovement : MonoBehaviour
         while (remainingAngle > 0)
         {
             float rotationAngle = Mathf.Min(Time.deltaTime * speed, remainingAngle);
-            transform.RotateAround(rotationCenter, rotiationAxis, rotationAngle);
+            goRenderer.transform.RotateAround(rotationCenter, rotiationAxis, rotationAngle);
             remainingAngle -= rotationAngle;
             yield return null;
         }
@@ -38,8 +45,8 @@ public class CubeMovement : MonoBehaviour
     }
 
     private Vector3 GetRotationCenter(Vector3 direction) {
-        Vector3 halfScale = transform.localScale / 2f;
-        return transform.position + (direction * halfScale.x) + (Vector3.down * halfScale.y);
+        Vector3 halfScale = goRenderer.transform.lossyScale / 2f;
+        return goRenderer.transform.position + (direction * halfScale.x) + (Vector3.down * halfScale.y);
     }
     
 }
