@@ -163,15 +163,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515389062}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbf47e71fe6b9a24481be291905cf9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1329281798}
-  _cameraSizeTarget: 0
-  _moveVel: {x: 0, y: 0, z: 0}
-  _cameraSizeVel: 0
+  _player: {fileID: 1494863265}
+  _cameraSizeTarget: 5
 --- !u!1 &649134413
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1329281800}
+  - component: {fileID: 1329281801}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -360,6 +359,19 @@ Transform:
   - {fileID: 1494863269}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1329281801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329281798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58de8487804cb048aa37b35d58fcccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 400
 --- !u!1 &1494863265
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +384,6 @@ GameObject:
   - component: {fileID: 1494863268}
   - component: {fileID: 1494863267}
   - component: {fileID: 1494863266}
-  - component: {fileID: 1494863270}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -466,19 +477,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1329281800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1494863270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494863265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c58de8487804cb048aa37b35d58fcccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 400
 --- !u!1 &1617051093
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +504,7 @@ Transform:
   m_GameObject: {fileID: 1617051093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -524,10 +522,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99947e05a3abc44fa4d27ac2f47df23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _size: {x: 15, y: 15}
-  _gap: {x: 0, y: 0}
+  _size: {x: 10, y: 10}
+  _gap: {x: 1, y: 1}
   _skipAmount: 0
-  _forestAmount: 0.2
+  _forestAmount: 0.05
   _gridType: 1
   _configs:
   - {fileID: 11400000, guid: 47b7b599082bef7439301b707dc80395, type: 2}
@@ -673,8 +671,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1210022362}
   - {fileID: 1617051094}
-  - {fileID: 515389063}
   - {fileID: 649134414}
+  - {fileID: 515389063}
   - {fileID: 1329281800}
   - {fileID: 1942728451}
   - {fileID: 704534873}
