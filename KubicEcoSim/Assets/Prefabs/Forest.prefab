@@ -128,7 +128,8 @@ GameObject:
   - component: {fileID: 5373336911621131563}
   - component: {fileID: 304045056717094279}
   - component: {fileID: 1367806992624386859}
-  m_Layer: 0
+  - component: {fileID: 9166482352031408069}
+  m_Layer: 3
   m_Name: Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,6 +214,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990b3f5c02885d14aa5b9f504c3810f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &9166482352031408069
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5563518973446526247}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8043380245677946606
 GameObject:
   m_ObjectHideFlags: 0
